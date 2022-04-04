@@ -1,0 +1,20 @@
+.profile__avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 20px 0 0;
+  padding: 0;
+  grid-area: avatar;
+}
+  
+@media (max-width: 1023px) {
+  .profile__avatar {
+    margin: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .profile__avatar {
+    margin: 0 auto 22.25px;
+  }
+}
