@@ -1,6 +1,6 @@
 .elements__cell {
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
   margin: 0;
   padding: 0;
   max-width: 282px;
