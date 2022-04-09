@@ -3,12 +3,10 @@
   flex-direction: column;
   margin: 0;
   padding: 34px 36px 37px;
-  height: 259px;
 }
 
 @media (max-width: 767px) {
   .popup__content {
     padding: 25px 22px 25px;
-    height: 272px;
   }
 }

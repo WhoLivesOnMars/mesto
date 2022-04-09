@@ -2,7 +2,6 @@
   list-style-type: none;
   text-decoration: none;
   width: 100%;
-  min-height: 744px;
   display: grid;
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(3, 1fr);
@@ -17,7 +16,6 @@
       
 @media (max-width: 1023px) {
   .elements__cells {
-    min-height: 1123px;
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(2, 1fr);
     margin: 0 0 50px;
@@ -26,7 +24,6 @@
     
 @media (max-width: 767px) {
   .elements__cells {
-    min-height: 2268px;
     grid-template-rows: repeat(6, 1fr);
     grid-template-columns: 288px;
     gap: 20px;
