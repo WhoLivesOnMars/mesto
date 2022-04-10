@@ -1,4 +1,4 @@
-.popup__description {
+.popup__input_type_username {
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -9,7 +9,7 @@
 }
 
 @media (max-width: 767px) {
-  .popup__description {
+  .popup__input_type_username {
     max-width: 238px;
   }
 }
