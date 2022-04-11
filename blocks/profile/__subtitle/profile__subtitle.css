@@ -5,6 +5,10 @@
   margin: 0;
   padding: 0;
   grid-area: subtitle;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 336px;
 }
   
 @media (max-width: 767px) {
@@ -12,5 +16,6 @@
     font-size: 14px;
     line-height: 17px;
     padding: 0 0 0 16px;
+    max-width: 282px;
   }
 }
