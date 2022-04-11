@@ -21,70 +21,66 @@
       <button class="profile__add-button" aria-label="Добавить" type="button"></button>
     </section>
     <section class="elements">
-        <ul class="elements__cells">
-          <li class="elements__cell">
-            <img class="elements__item" src="./images/karachaevsk.jpg" alt="Карачаевск">
-            <div class="elements__description">
-              <h2 class="elements__title">Карачаевск</h2>
-              <button class="elements__like-button" aria-label="Поставить лайк"></button>
-            </div>
-          </li>
-          <li class="elements__cell">  
-            <img class="elements__item" src="./images/el'brus.jpg" alt="Гора Эльбрус">
-            <div class="elements__description">
-              <h2 class="elements__title">Гора Эльбрус</h2>
-              <button class="elements__like-button" aria-label="Поставить лайк"></button>
-            </div>  
-          </li>
-          <li class="elements__cell">
-            <img class="elements__item" src="./images/dombay.jpg" alt="Домбай">
-            <div class="elements__description">
-              <h2 class="elements__title">Домбай</h2>
-              <button class="elements__like-button" aria-label="Поставить лайк"></button>
-            </div>  
-          </li>
-          <li class="elements__cell">  
-            <img class="elements__item" src="./images/el'brus.jpg" alt="Гора Эльбрус">
-            <div class="elements__description">
-              <h2 class="elements__title">Гора Эльбрус</h2>
-              <button class="elements__like-button" aria-label="Поставить лайк"></button>
-            </div>  
-          </li>
-          <li class="elements__cell">
-            <img class="elements__item" src="./images/dombay.jpg" alt="Домбай">
-            <div class="elements__description">
-              <h2 class="elements__title">Домбай</h2>
-              <button class="elements__like-button" aria-label="Поставить лайк"></button>
-            </div>  
-          </li>
-          <li class="elements__cell">
-            <img class="elements__item" src="./images/karachaevsk.jpg" alt="Карачаево-Черкесия">
-            <div class="elements__description">
-              <h2 class="elements__title">Карачаево-Черкесия</h2>
-              <button class="elements__like-button" aria-label="Поставить лайк"></button>
-            </div>  
-          </li>
-        </ul>
-      </section>
-    <footer class="footer">
-      <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
-    </footer>
+      <ul class="elements__cells">
+        <li class="elements__cell">
+          <img class="elements__item" src="./images/karachaevsk.jpg" alt="Поросшие травой развалины старого храма в Карачаевске.">
+          <div class="elements__description">
+            <h2 class="elements__title">Карачаевск</h2>
+            <button class="elements__like-button" aria-label="Поставить лайк"></button>
+          </div>
+        </li>
+        <li class="elements__cell">  
+          <img class="elements__item" src="./images/el'brus.jpg" alt="Виднеющаяся вдали Гора Эльбрус на закате.">
+          <div class="elements__description">
+            <h2 class="elements__title">Гора Эльбрус</h2>
+            <button class="elements__like-button" aria-label="Поставить лайк"></button>
+          </div>  
+        </li>
+        <li class="elements__cell">
+          <img class="elements__item" src="./images/dombay.jpg" alt="Заснеженный пик горы позади осеннего леса в Домбае.">
+          <div class="elements__description">
+            <h2 class="elements__title">Домбай</h2>
+            <button class="elements__like-button" aria-label="Поставить лайк"></button>
+          </div>  
+        </li>
+        <li class="elements__cell">  
+          <img class="elements__item" src="./images/el'brus.jpg" alt="Виднеющаяся вдали Гора Эльбрус на закате.">
+          <div class="elements__description">
+            <h2 class="elements__title">Гора Эльбрус</h2>
+            <button class="elements__like-button" aria-label="Поставить лайк"></button>
+          </div>  
+        </li>
+        <li class="elements__cell">
+          <img class="elements__item" src="./images/dombay.jpg" alt="Заснеженный пик горы позади осеннего леса в Домбае.">
+          <div class="elements__description">
+            <h2 class="elements__title">Домбай</h2>
+            <button class="elements__like-button" aria-label="Поставить лайк"></button>
+          </div>  
+        </li>
+        <li class="elements__cell">
+          <img class="elements__item" src="./images/karachaevsk.jpg" alt="Поросшие травой развалины старого храма в Карачаевске.">
+          <div class="elements__description">
+            <h2 class="elements__title">Карачаево-Черкесия</h2>
+            <button class="elements__like-button" aria-label="Поставить лайк"></button>
+          </div>  
+        </li>
+      </ul>
+    </section>
   </main>
+  <footer class="footer">
+    <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
+  </footer>
   <div class="popup">
     <div class="popup__container">
       <button class="popup__close-button" aria-label="Закрыть"></button>
-      <section class="popup__content">
+      <form class="popup__content" name="userForm" method="post">
         <h3 class="popup__title">Редактировать профиль</h3>
-        <div class="popup__cell">
-          <input class="popup__input popup__input_type_username" type="text" maxlength="12">
-        </div>  
-        <div class="popup__cell">
-          <input class="popup__input popup__input_type_description" type="text" maxlength="50">
-        </div>
+        <input class="popup__input popup__input_type_username" name="username" type="text" placeholder="Имя" maxlength="12">
+        <input class="popup__input popup__input_type_description" name="description" type="text" placeholder="О себе" maxlength="50">
         <button class="popup__save-button" type="submit">Сохранить</button>
-      </section>
+      </form>
     </div>
   </div>
-<script src="./scripts/index.js"></script> 
+<script src="./scripts/index.js"></script>
 </body>
 </html>
