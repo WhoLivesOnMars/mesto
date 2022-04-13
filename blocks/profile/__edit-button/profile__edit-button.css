@@ -6,9 +6,8 @@
   background-image: url(../../../images/profile__edit-button.svg);
   width: 24px;
   height: 24px;
-  margin: 0;
+  margin: 15px 0 0;
   padding: 0;
-  align-self: end;
   grid-area: button;
   transition: opacity .4s linear;
 }
@@ -22,5 +21,12 @@
     width: 18px;
     height: 18px;
     background-size: cover;
+    margin: 11px 0 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .profile__edit-button {
+    margin: 9px 0 0;
   }
 }
