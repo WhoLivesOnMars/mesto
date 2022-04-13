@@ -1,5 +1,5 @@
 .profile__add-button {
-  background: none;
+  background-color: transparent;
   outline: none;
   cursor: pointer;
   width: 150px;
