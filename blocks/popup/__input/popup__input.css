@@ -2,14 +2,24 @@
   height: 26px;
   margin: 0 0 26px;
   padding: 0 0 5px;
-  width: 100%;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  outline: none;   
+  outline: none;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  max-width: 358px; 
 }
 
 .popup__input:focus {
   border: 3px solid rgba(9, 133, 234, 0.6);
   border-radius: 2px;
   height: 30px;
+}
+
+@media (max-width: 767px) {
+  .popup__input {
+    max-width: 282px; 
+  }
 }
