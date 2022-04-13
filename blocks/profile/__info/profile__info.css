@@ -5,22 +5,16 @@
   grid-template-areas:
   "title button"
   "subtitle .";
-  margin: 22px 220px 25px 0;
+  margin: 22px auto 25px 0;
   padding: 0;
   column-gap: 18px;
   row-gap: 7px;
   box-sizing: border-box;
 }
-
-@media (max-width: 1279px) {
-  .profile__info {
-    margin: 22px 150px 25px 0;
-  }
-}
   
 @media (max-width: 1023px) {
   .profile__info {
-    margin: 22px 30px 20px 0;
+    margin: 22px auto 20px 0;
     grid-template-columns: 220px 20px;
     grid-template-rows: 35px 25px;
     column-gap: 2px;
