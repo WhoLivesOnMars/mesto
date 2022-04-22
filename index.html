@@ -21,55 +21,22 @@
       <button class="profile__add-button" type="button" aria-label="Добавить"></button>
     </section>
     <section class="elements">
-      <ul class="elements__cells">
-        <li class="elements__cell">
-          <img class="elements__item" src="./images/karachaevsk.jpg" alt="Поросшие травой развалины старого храма в Карачаевске.">
-          <div class="elements__description">
-            <h2 class="elements__title">Карачаевск</h2>
-            <button class="elements__like-button" type="button" aria-label="Поставить лайк"></button>
-          </div>
-        </li>
-        <li class="elements__cell">  
-          <img class="elements__item" src="./images/el'brus.jpg" alt="Виднеющаяся вдали Гора Эльбрус на закате.">
-          <div class="elements__description">
-            <h2 class="elements__title">Гора Эльбрус</h2>
-            <button class="elements__like-button" type="button" aria-label="Поставить лайк"></button>
-          </div>  
-        </li>
-        <li class="elements__cell">
-          <img class="elements__item" src="./images/dombay.jpg" alt="Заснеженный пик горы позади осеннего леса в Домбае.">
-          <div class="elements__description">
-            <h2 class="elements__title">Домбай</h2>
-            <button class="elements__like-button" type="button" aria-label="Поставить лайк"></button>
-          </div>  
-        </li>
-        <li class="elements__cell">  
-          <img class="elements__item" src="./images/el'brus.jpg" alt="Виднеющаяся вдали Гора Эльбрус на закате.">
-          <div class="elements__description">
-            <h2 class="elements__title">Гора Эльбрус</h2>
-            <button class="elements__like-button" type="button" aria-label="Поставить лайк"></button>
-          </div>  
-        </li>
-        <li class="elements__cell">
-          <img class="elements__item" src="./images/dombay.jpg" alt="Заснеженный пик горы позади осеннего леса в Домбае.">
-          <div class="elements__description">
-            <h2 class="elements__title">Домбай</h2>
-            <button class="elements__like-button" type="button" aria-label="Поставить лайк"></button>
-          </div>  
-        </li>
-        <li class="elements__cell">
-          <img class="elements__item" src="./images/karachaevsk.jpg" alt="Поросшие травой развалины старого храма в Карачаевске.">
-          <div class="elements__description">
-            <h2 class="elements__title">Карачаево-Черкесия</h2>
-            <button class="elements__like-button" type="button" aria-label="Поставить лайк"></button>
-          </div>  
-        </li>
-      </ul>
+      <ul class="elements__cells"></ul>
     </section>
   </main>
   <footer class="footer">
     <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
   </footer>
+  <template class="elements-template">
+    <li class="elements__cell">
+      <img class="elements__item" src="#" alt="">
+      <button class="elements__delete-button" type="button" aria-label="Удалить карточку"></button>
+      <div class="elements__description">
+        <h2 class="elements__title"></h2>
+        <button class="elements__like-button" type="button" aria-label="Поставить лайк"></button>
+      </div>
+    </li>
+  </template>
   <div class="popup">
     <div class="popup__container">
       <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
