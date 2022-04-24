@@ -1,12 +1,17 @@
-const popupElement = document.querySelector('.popup');
+const editFormElement = document.querySelector('.edit-form');
 const editButton = document.querySelector('.profile__edit-button');
-const closeButton = popupElement.querySelector('.popup__close-button');
+const closeButton = editFormElement.querySelector('.edit-form__close-button');
 const profileName = document.querySelector('.profile__title');
 const profileDescription = document.querySelector('.profile__subtitle');
-const formElement = document.querySelector('.popup__content');
+const formElement = document.querySelector('.edit-form__content');
 const popupContainer = document.querySelector('.popup__container');
-const nameInput = popupContainer.querySelector('.popup__input_type_username');
-const jobInput = popupContainer.querySelector('.popup__input_type_description');
+const nameInput = popupContainer.querySelector('.edit-form__input_type_username');
+const jobInput = popupContainer.querySelector('.edit-form__input_type_description');
+const addButton = document.querySelector('.profile__add-button');
+const newItemElement = document.querySelector('.item-form');
+const titleInput = popupContainer.querySelector('.item-form__input_type_title');
+const linkInput = popupContainer.querySelector('.item-form__input_type_link');
+const closeForm = newItemElement.querySelector('.item-form__close-button');
 const initialCards = [
     {
       name: 'Санкт-Петербург',
@@ -54,13 +59,13 @@ cardContainer.append(...elements)
 
    
 function openPopup() {
-  popupElement.classList.add('popup_opened');
+  editFormElement.classList.add('popup_opened');
   nameInput.value = profileName.textContent;
   jobInput.value = profileDescription.textContent; 
 }
  
 function closePopup() {
-  popupElement.classList.remove('popup_opened');
+  editFormElement.classList.remove('popup_opened');
 }
 
 editButton.addEventListener('click', openPopup);
@@ -72,7 +77,21 @@ function formSubmitHandler (evt) {
  
   profileName.textContent = nameInput.value;
   profileDescription.textContent = jobInput.value;
-  popupElement.classList.remove('popup_opened'); 
+  editFormElement.classList.remove('popup_opened'); 
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
+
+function addNewCard() {
+  newItemElement.classList.add('item-form_opened');
+  titleInput.value;
+  linkInput.value;
+}
+
+function closeItemForm() {
+  newItemElement.classList.remove('item-form_opened');
+}
+  
+addButton.addEventListener('click', addNewCard);
+
+closeForm.addEventListener('click', closeItemForm);
