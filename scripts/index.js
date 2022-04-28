@@ -3,14 +3,15 @@ const editButton = document.querySelector('.profile__edit-button');
 const closeButton = editFormElement.querySelector('.edit-form__close-button');
 const profileName = document.querySelector('.profile__title');
 const profileDescription = document.querySelector('.profile__subtitle');
-const formElement = document.querySelector('.edit-form__content');
+const formElement = document.querySelector('.popup__content');
 const popupContainer = document.querySelector('.popup__container');
 const nameInput = popupContainer.querySelector('.edit-form__input_type_username');
 const jobInput = popupContainer.querySelector('.edit-form__input_type_description');
 const addButton = document.querySelector('.profile__add-button');
 const newItemElement = document.querySelector('.item-form');
-const titleInput = popupContainer.querySelector('.item-form__input_type_title');
-const linkInput = popupContainer.querySelector('.item-form__input_type_link');
+const popupContainerPlace = document.querySelector('.edit-form__container'); 
+const titleInput = document.querySelector('.item-form__input_type_title');
+const linkInput = document.querySelector('.item-form__input_type_link');
 const closeForm = newItemElement.querySelector('.item-form__close-button');
 const initialCards = [
     {
@@ -40,6 +41,9 @@ const initialCards = [
   ];
 
 const cardContainer = document.querySelector('.elements__cells');
+const addNewCardForm = document.querySelector('.item-form__content');
+
+/*------------ Карточки "из коробки" --------------*/
 
 const createBlock = (card) => {
   const template = document.querySelector('.elements-template');
@@ -51,13 +55,32 @@ const createBlock = (card) => {
   return task;
 }
 
- 
 const elements = initialCards.map(function(card) {
-  return createBlock(card);
-})
-cardContainer.append(...elements)
+    return createBlock(card);
+  })
+  cardContainer.append(...elements)
 
-   
+/*------------ Добавление новой карточки --------------*/
+
+const renderCard = (card) => {
+ cardContainer.prepend(createBlock(card));
+};
+    
+const addNewCard = (event) => {
+event.preventDefault();
+const card = {};
+card.name = titleInput.value;
+card.link = linkInput.value;
+renderCard(card);
+titleInput.value = '';
+linkInput.value = '';
+closeItemForm(newItemElement);
+}
+
+addNewCardForm.addEventListener('submit', addNewCard);
+
+/*------- Попап для редактирования информации в профиле -------*/
+
 function openPopup() {
   editFormElement.classList.add('popup_opened');
   nameInput.value = profileName.textContent;
@@ -82,7 +105,9 @@ function formSubmitHandler (evt) {
 
 formElement.addEventListener('submit', formSubmitHandler);
 
-function addNewCard() {
+/*---------- Попап для добавления новой карточки --------------*/
+
+function openItemForm() {
   newItemElement.classList.add('item-form_opened');
   titleInput.value;
   linkInput.value;
@@ -92,6 +117,6 @@ function closeItemForm() {
   newItemElement.classList.remove('item-form_opened');
 }
   
-addButton.addEventListener('click', addNewCard);
+addButton.addEventListener('click', openItemForm);
 
 closeForm.addEventListener('click', closeItemForm);
