@@ -52,6 +52,12 @@ const createBlock = (card) => {
   task.querySelector('.elements__title').textContent = card.name;
   cardPic.src = card.link;
   cardPic.alt = card.name;
+  
+  task.querySelector('.elements__like-button').addEventListener('click', (evt) => {
+    evt.target.classList.toggle('elements__like-button');
+    evt.target.classList.toggle('elements__like-button_active');
+  });
+  
   return task;
 }
 
@@ -79,7 +85,7 @@ closeItemForm(newItemElement);
 
 addNewCardForm.addEventListener('submit', addNewCard);
 
-/*------- Попап для редактирования информации в профиле -------*/
+/*------- Попап редактирования информации в профиле -------*/
 
 function openPopup() {
   editFormElement.classList.add('popup_opened');
@@ -105,7 +111,7 @@ function formSubmitHandler (evt) {
 
 formElement.addEventListener('submit', formSubmitHandler);
 
-/*---------- Попап для добавления новой карточки --------------*/
+/*---------- Попап добавления карточки --------------*/
 
 function openItemForm() {
   newItemElement.classList.add('item-form_opened');
@@ -120,3 +126,15 @@ function closeItemForm() {
 addButton.addEventListener('click', openItemForm);
 
 closeForm.addEventListener('click', closeItemForm);
+
+/*------------------ Лайк карточки --------------------*/
+
+
+
+const likeButton = document.querySelectorAll('.element__like');
+function like() {
+    likeButton.forEach(function (evt) {
+       evt.target.classList.toggle('element__like_active');
+    });
+ }
+ likeButton.addEventListener('click', like);
