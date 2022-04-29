@@ -53,6 +53,10 @@ const createBlock = (card) => {
   cardPic.src = card.link;
   cardPic.alt = card.name;
   
+  task.querySelector('.elements__delete-button').addEventListener('click', () => {
+    task.remove();
+  });
+
   task.querySelector('.elements__like-button').addEventListener('click', (evt) => {
     evt.target.classList.toggle('elements__like-button');
     evt.target.classList.toggle('elements__like-button_active');
