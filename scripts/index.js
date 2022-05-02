@@ -13,6 +13,7 @@ const popupContainerPlace = document.querySelector('.edit-form__container');
 const titleInput = document.querySelector('.item-form__input_type_title');
 const linkInput = document.querySelector('.item-form__input_type_link');
 const closeForm = newItemElement.querySelector('.item-form__close-button');
+const viewerElement = document.querySelector('.picture-viewer');
 const initialCards = [
     {
       name: 'Санкт-Петербург',
@@ -62,6 +63,20 @@ const createBlock = (card) => {
     evt.target.classList.toggle('elements__like-button_active');
   });
   
+  function openModalPic() {
+    viewerElement.classList.add('picture-viewer_opened');
+    cardPic.link;
+  }
+  
+  function closeModalPic() {
+    viewerElement.classList.remove('picture-viewer_opened');
+  }
+
+  cardPic.addEventListener('click', () => openModalPic(card));
+  const closePic = document.querySelector('.picture-viewer__close-button').addEventListener('click', () =>
+  closeModalPic());
+
+
   return task;
 }
 
@@ -131,14 +146,9 @@ addButton.addEventListener('click', openItemForm);
 
 closeForm.addEventListener('click', closeItemForm);
 
-/*------------------ Лайк карточки --------------------*/
+ /*---------- Открытие попапа с картинкой ------------*/
 
 
 
-const likeButton = document.querySelectorAll('.element__like');
-function like() {
-    likeButton.forEach(function (evt) {
-       evt.target.classList.toggle('element__like_active');
-    });
- }
- likeButton.addEventListener('click', like);
+
+  closeForm.addEventListener('click', closeModalPic);
