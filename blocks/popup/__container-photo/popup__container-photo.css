@@ -1,14 +1,15 @@
-.picture-viewer__container {
+.popup__container-photo {
   position: relative;
-  height: 540px;
   max-height: 75vh;
   max-width: 75vw;
+  color: #fff;
   margin: 0;
   padding: 0;
 }
   
 @media (max-width: 767px) {
-  .picture-viewer__container {
-    height: 299px;
+  .popup__container-photo {
+    min-width: 240px;
+    min-height: 299px;
   }
 }
