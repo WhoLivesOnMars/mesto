@@ -21,66 +21,51 @@
       <button class="profile__add-button" type="button" aria-label="Добавить"></button>
     </section>
     <section class="elements">
-      <ul class="elements__cells">
-        <li class="elements__cell">
-          <img class="elements__item" src="./images/karachaevsk.jpg" alt="Поросшие травой развалины старого храма в Карачаевске.">
-          <div class="elements__description">
-            <h2 class="elements__title">Карачаевск</h2>
-            <button class="elements__like-button" type="button" aria-label="Поставить лайк"></button>
-          </div>
-        </li>
-        <li class="elements__cell">  
-          <img class="elements__item" src="./images/el'brus.jpg" alt="Виднеющаяся вдали Гора Эльбрус на закате.">
-          <div class="elements__description">
-            <h2 class="elements__title">Гора Эльбрус</h2>
-            <button class="elements__like-button" type="button" aria-label="Поставить лайк"></button>
-          </div>  
-        </li>
-        <li class="elements__cell">
-          <img class="elements__item" src="./images/dombay.jpg" alt="Заснеженный пик горы позади осеннего леса в Домбае.">
-          <div class="elements__description">
-            <h2 class="elements__title">Домбай</h2>
-            <button class="elements__like-button" type="button" aria-label="Поставить лайк"></button>
-          </div>  
-        </li>
-        <li class="elements__cell">  
-          <img class="elements__item" src="./images/el'brus.jpg" alt="Виднеющаяся вдали Гора Эльбрус на закате.">
-          <div class="elements__description">
-            <h2 class="elements__title">Гора Эльбрус</h2>
-            <button class="elements__like-button" type="button" aria-label="Поставить лайк"></button>
-          </div>  
-        </li>
-        <li class="elements__cell">
-          <img class="elements__item" src="./images/dombay.jpg" alt="Заснеженный пик горы позади осеннего леса в Домбае.">
-          <div class="elements__description">
-            <h2 class="elements__title">Домбай</h2>
-            <button class="elements__like-button" type="button" aria-label="Поставить лайк"></button>
-          </div>  
-        </li>
-        <li class="elements__cell">
-          <img class="elements__item" src="./images/karachaevsk.jpg" alt="Поросшие травой развалины старого храма в Карачаевске.">
-          <div class="elements__description">
-            <h2 class="elements__title">Карачаево-Черкесия</h2>
-            <button class="elements__like-button" type="button" aria-label="Поставить лайк"></button>
-          </div>  
-        </li>
-      </ul>
+      <ul class="elements__cells"></ul>
     </section>
   </main>
   <footer class="footer">
     <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
   </footer>
-  <div class="popup">
-    <div class="popup__container">
-      <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
-      <form class="popup__content" name="userForm" method="post">
+  <template class="elements-template">
+    <li class="elements__cell">
+      <img class="elements__item" src="#" alt="">
+      <button class="elements__delete-button" type="button" aria-label="Удалить карточку"></button>
+      <div class="elements__description">
+        <h2 class="elements__title"></h2>
+        <button class="elements__like-button" type="button" aria-label="Поставить лайк"></button>
+      </div>
+    </li>
+  </template>
+  <div class="popup edit-form">
+    <div class="popup__container edit-form__container">
+      <button class="popup__close-button edit-form__close-button" type="button" aria-label="Закрыть"></button>
+      <form class="popup__content edit-form__content" name="userForm" method="post">
         <h3 class="popup__title">Редактировать профиль</h3>
-        <input class="popup__input popup__input_type_username" name="username" type="text" placeholder="Имя">
-        <input class="popup__input popup__input_type_description" name="description" type="text" placeholder="О себе">
+        <input class="popup__input edit-form__input edit-form__input_type_username" name="username" type="text" placeholder="Имя">
+        <input class="popup__input edit-form__input edit-form__input_type_description" name="description" type="text" placeholder="О себе">
         <button class="popup__save-button" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
-<script src="./scripts/index.js"></script>
+  <div class="popup item-form">
+    <div class="popup__container item-form__container">
+      <button class="popup__close-button item-form__close-button" type="button" aria-label="Закрыть"></button>
+      <form class="popup__content item-form__content" name="newItemForm" method="post">
+        <h3 class="popup__title">Новое место</h3>
+        <input class="popup__input item-form__input item-form__input_type_title" name="title" type="text" placeholder="Название">
+        <input class="popup__input item-form__input item-form__input_type_link" name="link" type="text" placeholder="Ссылка на картинку">
+        <button class="popup__save-button item-form__save-button" type="submit">Создать</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup picture-viewer">
+    <div class="popup__container-photo picture-viewer__container">
+      <button class="popup__close-button picture-viewer__close-button" type="button" aria-label="Закрыть"></button>
+      <img class="popup__photo picture-viewer__image" src="#" alt="">
+      <h3 class="popup__capture"></h3>
+    </div>
+  </div>
+  <script src="./scripts/index.js"></script>
 </body>
 </html>
