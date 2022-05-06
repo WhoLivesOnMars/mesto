@@ -43,16 +43,29 @@ const initialCards = [
 
 const cardContainer = document.querySelector('.elements__cells');
 const addNewCardForm = document.querySelector('.item-form__content');
+const openPic = document.querySelector('.picture-viewer');
+const closePic = document.querySelector('.picture-viewer__close-button');
+const zoomPic = document.querySelector('.picture-viewer__image');
+const zoomCapture = document.querySelector('.popup__capture');
+
+function openModalPic (card) {
+  openPic.classList.add('picture-viewer_opened');
+  zoomCapture.textContent = card.name;
+  zoomPic.src = card.link;
+}
+
+function closeModalPic() {
+  openPic.classList.remove('picture-viewer_opened');
+}
 
 /*------------ Карточки "из коробки" --------------*/
 
 const createBlock = (card) => {
   const template = document.querySelector('.elements-template');
   const task = template.content.querySelector('.elements__cell').cloneNode(true);
-  const cardPic = task.querySelector('.elements__item');
   task.querySelector('.elements__title').textContent = card.name;
-  cardPic.src = card.link;
-  cardPic.alt = card.name;
+  task.querySelector('.elements__item').src = card.link;
+  task.querySelector('.elements__item').alt = card.name;
   
   task.querySelector('.elements__delete-button').addEventListener('click', () => {
     task.remove();
@@ -63,19 +76,10 @@ const createBlock = (card) => {
     evt.target.classList.toggle('elements__like-button_active');
   });
   
-  function openModalPic() {
-    viewerElement.classList.add('picture-viewer_opened');
-    cardPic.link;
-  }
-  
-  function closeModalPic() {
-    viewerElement.classList.remove('picture-viewer_opened');
-  }
-
-  cardPic.addEventListener('click', () => openModalPic(card));
+  task.querySelector('.elements__item').addEventListener('click', () => openModalPic(card));
+  // cardPic.addEventListener('click', () => openModalPic(card));
   const closePic = document.querySelector('.picture-viewer__close-button').addEventListener('click', () =>
   closeModalPic());
-
 
   return task;
 }
