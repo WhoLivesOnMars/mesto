@@ -91,6 +91,7 @@ const createBlock = (card) => {
   task.querySelector('.elements__item').addEventListener('click', () => {
     zoomCapture.textContent = card.name;
     zoomPic.src = card.link;
+    zoomPic.alt = card.name;
     openPopup(viewerElement);
   });
   // cardPic.addEventListener('click', () => openModalPic(card));
