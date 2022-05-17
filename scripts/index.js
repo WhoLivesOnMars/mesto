@@ -49,6 +49,7 @@ const openPic = document.querySelector('.picture-viewer');
 const closePic = document.querySelector('.picture-viewer__close-button');
 const zoomPic = document.querySelector('.picture-viewer__image');
 const zoomCapture = document.querySelector('.popup__capture');
+// const buttonClose = document.querySelectorAll('.popup__close-button');
 
 /*---------- Открытие/закрытие попапов ------------*/
 
@@ -60,16 +61,11 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-/* function openModalPic (card) {
-  // openPic.classList.add('picture-viewer_opened');
-  openPopup(popup);
-  zoomCapture.textContent = card.name;
-  zoomPic.src = card.link;
-} */
+/* buttonClose.forEach(function(item){
+  item.addEventListener ('click', function (evt) {
 
-/* function closeModalPic() {
-  openPic.classList.remove('picture-viewer_opened');
-} */
+  })
+}) */
 
 /*------------ Карточки "из коробки" --------------*/
 
@@ -94,12 +90,11 @@ const createBlock = (card) => {
     zoomPic.alt = card.name;
     openPopup(viewerElement);
   });
-  // cardPic.addEventListener('click', () => openModalPic(card));
-  closePic.addEventListener('click', () =>
-  closePopup(viewerElement));
 
   return task;
 }
+
+closePic.addEventListener('click', () => closePopup(viewerElement));
 
 const elements = initialCards.map(function(card) {
     return createBlock(card);
@@ -127,31 +122,19 @@ addNewCardForm.addEventListener('submit', addNewCard);
 
 /*------- Попап редактирования информации в профиле -------*/
 
-/* function openUserPopup() {
-  // editFormElement.classList.add('popup_opened'); 
-  openPopup(popup);
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileDescription.textContent; 
-} */
- 
-/* function closePopup() {
-  editFormElement.classList.remove('popup_opened');
-} */
-
 editButton.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profileDescription.textContent; 
   openPopup(editFormElement);
 });
   
-closeButton.addEventListener('click', closePopup);
+closeButton.addEventListener('click', () => closePopup(editFormElement));
   
 function formSubmitHandler (evt) {
   evt.preventDefault();
  
   profileName.textContent = nameInput.value;
   profileDescription.textContent = jobInput.value;
-  // editFormElement.classList.remove('popup_opened');
   closePopup(editFormElement);
 }
 
@@ -159,25 +142,8 @@ formElement.addEventListener('submit', formSubmitHandler);
 
 /*---------- Попап добавления карточки --------------*/
 
-/* function openItemForm() {
-  // newItemElement.classList.add('item-form_opened');
-  openPopup(popup);
-  titleInput.value;
-  linkInput.value;
-} */
-
-/* function closeItemForm() {
-  newItemElement.classList.remove('item-form_opened');
-} */
-  
 addButton.addEventListener('click', () => {
-  // titleInput.value;
-  // linkInput.value; 
   openPopup(newItemElement)
 });
 
-closeForm.addEventListener('click', closePopup);
-
- /*---------- Открытие попапа с картинкой ------------*/
-
-// closeForm.addEventListener('click', closePopup);
+closeForm.addEventListener('click', () => closePopup(newItemElement));
