@@ -1,3 +1,4 @@
+const popup = document.querySelector('.popup')
 const editFormElement = document.querySelector('.edit-form');
 const editButton = document.querySelector('.profile__edit-button');
 const closeButton = editFormElement.querySelector('.edit-form__close-button');
@@ -5,15 +6,18 @@ const profileName = document.querySelector('.profile__title');
 const profileDescription = document.querySelector('.profile__subtitle');
 const formElement = document.querySelector('.popup__content');
 const popupContainer = document.querySelector('.popup__container');
+// const formInput = formElement.querySelector('.popup__input');
+// const formError = formElement.querySelector(`.${formInput.id}-error`);
 const nameInput = popupContainer.querySelector('.edit-form__input_type_username');
 const jobInput = popupContainer.querySelector('.edit-form__input_type_description');
 const addButton = document.querySelector('.profile__add-button');
 const newItemElement = document.querySelector('.item-form');
-const popupContainerPlace = document.querySelector('.edit-form__container'); 
+// const popupContainerPlace = document.querySelector('.edit-form__container'); 
 const titleInput = document.querySelector('.item-form__input_type_title');
 const linkInput = document.querySelector('.item-form__input_type_link');
 const closeForm = newItemElement.querySelector('.item-form__close-button');
 const viewerElement = document.querySelector('.picture-viewer');
+const template = document.querySelector('.elements-template');
 const initialCards = [
     {
       name: 'Санкт-Петербург',
@@ -43,25 +47,30 @@ const initialCards = [
 
 const cardContainer = document.querySelector('.elements__cells');
 const addNewCardForm = document.querySelector('.item-form__content');
-const openPic = document.querySelector('.picture-viewer');
 const closePic = document.querySelector('.picture-viewer__close-button');
 const zoomPic = document.querySelector('.picture-viewer__image');
 const zoomCapture = document.querySelector('.popup__capture');
+// const buttonClose = document.querySelectorAll('.popup__close-button');
 
-function openModalPic (card) {
-  openPic.classList.add('picture-viewer_opened');
-  zoomCapture.textContent = card.name;
-  zoomPic.src = card.link;
+/*---------- Открытие/закрытие попапов ------------*/
+
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+} 
+
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
 }
 
-function closeModalPic() {
-  openPic.classList.remove('picture-viewer_opened');
-}
+/* buttonClose.forEach(function(item){
+  item.addEventListener ('click', function (evt) {
+
+  })
+}) */
 
 /*------------ Карточки "из коробки" --------------*/
 
 const createBlock = (card) => {
-  const template = document.querySelector('.elements-template');
   const task = template.content.querySelector('.elements__cell').cloneNode(true);
   task.querySelector('.elements__title').textContent = card.name;
   task.querySelector('.elements__item').src = card.link;
@@ -76,13 +85,17 @@ const createBlock = (card) => {
     evt.target.classList.toggle('elements__like-button_active');
   });
   
-  task.querySelector('.elements__item').addEventListener('click', () => openModalPic(card));
-  // cardPic.addEventListener('click', () => openModalPic(card));
-  const closePic = document.querySelector('.picture-viewer__close-button').addEventListener('click', () =>
-  closeModalPic());
+  task.querySelector('.elements__item').addEventListener('click', () => {
+    zoomCapture.textContent = card.name;
+    zoomPic.src = card.link;
+    zoomPic.alt = card.name;
+    openPopup(viewerElement);
+  });
 
   return task;
 }
+
+closePic.addEventListener('click', () => closePopup(viewerElement));
 
 const elements = initialCards.map(function(card) {
     return createBlock(card);
@@ -103,56 +116,102 @@ card.link = linkInput.value;
 renderCard(card);
 titleInput.value = '';
 linkInput.value = '';
-closeItemForm(newItemElement);
+closePopup(newItemElement);
 }
 
 addNewCardForm.addEventListener('submit', addNewCard);
 
 /*------- Попап редактирования информации в профиле -------*/
 
-function openPopup() {
-  editFormElement.classList.add('popup_opened');
+editButton.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   jobInput.value = profileDescription.textContent; 
-}
- 
-function closePopup() {
-  editFormElement.classList.remove('popup_opened');
-}
-
-editButton.addEventListener('click', openPopup);
+  openPopup(editFormElement);
+});
   
-closeButton.addEventListener('click', closePopup);
+closeButton.addEventListener('click', () => closePopup(editFormElement));
   
 function formSubmitHandler (evt) {
   evt.preventDefault();
  
   profileName.textContent = nameInput.value;
   profileDescription.textContent = jobInput.value;
-  editFormElement.classList.remove('popup_opened'); 
+  closePopup(editFormElement);
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
 
 /*---------- Попап добавления карточки --------------*/
 
-function openItemForm() {
-  newItemElement.classList.add('item-form_opened');
-  titleInput.value;
-  linkInput.value;
-}
+addButton.addEventListener('click', () => {
+  openPopup(newItemElement)
+});
 
-function closeItemForm() {
-  newItemElement.classList.remove('item-form_opened');
-}
+closeForm.addEventListener('click', () => closePopup(newItemElement));
+
+/*------ Валидация формы ------*/
+
+const showInputError = (formElement, inputElement, errorMessage) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.add('popup__input_type_error');
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add('popup__input-error_active');
+};
   
-addButton.addEventListener('click', openItemForm);
+const hideInputError = (formElement, inputElement) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.remove('popup__input_type_error');
+  errorElement.classList.remove('popup__input-error_active');
+  errorElement.textContent = '';
+};
+  
+const checkInputValidity = (formElement, inputElement) => {
+  if (!inputElement.validity.valid) {
+    showInputError(formElement, inputElement, inputElement.validationMessage);
+  } else {
+    hideInputError(formElement, inputElement);
+  }
+};
+   
+const setEventListeners = (formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
+  const buttonSaveElement = formElement.querySelector('.popup__save-button');
 
-closeForm.addEventListener('click', closeItemForm);
+  // toggleButtonState(inputList, buttonSaveElement);
 
- /*---------- Открытие попапа с картинкой ------------*/
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener('input', () => {
+      checkInputValidity(formElement, inputElement);
 
+      toggleButtonState(inputList, buttonSaveElement);
+    });
+  });
+};
+setEventListeners(formElement); 
 
+/* function enableValidation() {
+  const formList = Array.from(document.querySelectorAll('.popup'));
+  formList.forEach((formElement) => {
+    
+     setEventListeners(formElement);
+  });
+}; */
 
+  
+/* formInput.addEventListener('input', function () {
+  checkInputValidity(form, formInput);
+}); */
 
-  closeForm.addEventListener('click', closeModalPic);
+const hasInvalidInput = (inputList) => {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  });
+};
+
+const toggleButtonState = (inputList, buttonSaveElement) => {
+  if (hasInvalidInput(inputList)) {
+    buttonSaveElement.classList.add('popup__save-button_inactive');
+  } else {
+    buttonSaveElement.classList.remove('popup__save-button_inactive');
+  }
+};

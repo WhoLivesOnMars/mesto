@@ -40,10 +40,12 @@
   <div class="popup edit-form">
     <div class="popup__container edit-form__container">
       <button class="popup__close-button edit-form__close-button" type="button" aria-label="Закрыть"></button>
-      <form class="popup__content edit-form__content" name="userForm" method="post">
+      <form class="popup__content edit-form__content" name="userForm" method="post" novalidate>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <input class="popup__input edit-form__input edit-form__input_type_username" name="username" type="text" placeholder="Имя">
-        <input class="popup__input edit-form__input edit-form__input_type_description" name="description" type="text" placeholder="О себе">
+        <input class="popup__input edit-form__input edit-form__input_type_username" id="username-input" name="username" type="text" placeholder="Имя" minlength="2" maxlength="40" required>
+        <span class="username-input-error popup__input-error"></span>
+        <input class="popup__input edit-form__input edit-form__input_type_description" id="description-input" name="description" type="text" placeholder="О себе" minlength="2" maxlength="200" required>
+        <span class="description-input-error popup__input-error"></span>
         <button class="popup__save-button" type="submit">Сохранить</button>
       </form>
     </div>
