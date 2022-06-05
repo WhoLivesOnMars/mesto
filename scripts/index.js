@@ -54,12 +54,21 @@ const zoomCapture = document.querySelector('.popup__capture');
 
 /*---------- Открытие/закрытие попапов ------------*/
 
+function closeByEsc(event){ 
+  if (event.key === "Escape") {
+    const currentPopup = document.querySelector('.popup_opened');
+    closePopup(currentPopup);
+  }
+};
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keyup', closeByEsc);
 } 
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keyup', closeByEsc);
 }
 
 /* buttonClose.forEach(function(item){
