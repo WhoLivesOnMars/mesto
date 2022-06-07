@@ -51,6 +51,7 @@ const closePic = document.querySelector('.picture-viewer__close-button');
 const zoomPic = document.querySelector('.picture-viewer__image');
 const zoomCapture = document.querySelector('.popup__capture');
 // const buttonClose = document.querySelectorAll('.popup__close-button');
+const popupList = Array.from(document.querySelectorAll('.popup'));
 
 /*---------- Открытие/закрытие попапов ------------*/
 
@@ -59,7 +60,7 @@ function closeByEsc(event){
     const currentPopup = document.querySelector('.popup_opened');
     closePopup(currentPopup);
   }
-};
+}
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -70,6 +71,14 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keyup', closeByEsc);
 }
+
+popupList.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+    closePopup(popup);
+    }
+  });
+})
 
 /* buttonClose.forEach(function(item){
   item.addEventListener ('click', function (evt) {
