@@ -6,13 +6,10 @@ const profileName = document.querySelector('.profile__title');
 const profileDescription = document.querySelector('.profile__subtitle');
 const formElement = document.querySelector('.popup__content');
 const popupContainer = document.querySelector('.popup__container');
-// const formInput = formElement.querySelector('.popup__input');
-// const formError = formElement.querySelector(`.${formInput.id}-error`);
 const nameInput = popupContainer.querySelector('.edit-form__input_type_username');
 const jobInput = popupContainer.querySelector('.edit-form__input_type_description');
 const addButton = document.querySelector('.profile__add-button');
 const newItemElement = document.querySelector('.item-form');
-// const popupContainerPlace = document.querySelector('.edit-form__container'); 
 const titleInput = document.querySelector('.item-form__input_type_title');
 const linkInput = document.querySelector('.item-form__input_type_link');
 const closeForm = newItemElement.querySelector('.item-form__close-button');
@@ -28,7 +25,7 @@ const initialCards = [
       link: 'https://images.unsplash.com/photo-1605789097480-10434f896946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80'
     },
     {
-      name: 'Дагестан',
+      name: 'Гамсутль',
       link: 'https://images.unsplash.com/photo-1634715109536-cb9a1bb02cec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80'
     },
     {
@@ -166,70 +163,3 @@ addButton.addEventListener('click', () => {
 });
 
 closeForm.addEventListener('click', () => closePopup(newItemElement));
-
-/*------ Валидация формы ------*/
-
-const showInputError = (formElement, inputElement, errorMessage) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add('popup__input_type_error');
-  errorElement.textContent = errorMessage;
-  errorElement.classList.add('popup__input-error_active');
-};
-  
-const hideInputError = (formElement, inputElement) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove('popup__input_type_error');
-  errorElement.classList.remove('popup__input-error_active');
-  errorElement.textContent = '';
-};
-  
-const checkInputValidity = (formElement, inputElement) => {
-  if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
-  } else {
-    hideInputError(formElement, inputElement);
-  }
-};
-   
-const setEventListeners = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
-  const buttonSaveElement = formElement.querySelector('.popup__save-button');
-
-  // toggleButtonState(inputList, buttonSaveElement);
-
-  inputList.forEach((inputElement) => {
-    inputElement.addEventListener('input', () => {
-      checkInputValidity(formElement, inputElement);
-
-      toggleButtonState(inputList, buttonSaveElement);
-    });
-  });
-};
-setEventListeners(formElement); 
-
-/* function enableValidation() {
-  const formList = Array.from(document.querySelectorAll('.popup'));
-  formList.forEach((formElement) => {
-    
-     setEventListeners(formElement);
-  });
-}; */
-
-  
-/* formInput.addEventListener('input', function () {
-  checkInputValidity(form, formInput);
-}); */
-
-const hasInvalidInput = (inputList) => {
-  return inputList.some((inputElement) => {
-    return !inputElement.validity.valid;
-  });
-};
-
-const toggleButtonState = (inputList, buttonSaveElement) => {
-  if (hasInvalidInput(inputList)) {
-    buttonSaveElement.classList.add('popup__save-button_inactive');
-  } else {
-    buttonSaveElement.classList.remove('popup__save-button_inactive');
-  }
-};

@@ -9,7 +9,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  max-width: 358px;
+  width: 100%;
 }
 
 .popup__input:focus {
@@ -24,7 +24,6 @@
 
 @media (max-width: 767px) {
   .popup__input {
-    max-width: 282px;
     margin: 5px 0 6px;
   }
 }
