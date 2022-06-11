@@ -10,7 +10,6 @@ const nameInput = popupContainer.querySelector('.edit-form__input_type_username'
 const jobInput = popupContainer.querySelector('.edit-form__input_type_description');
 const addButton = document.querySelector('.profile__add-button');
 const newItemElement = document.querySelector('.item-form');
-const popupContainerPlace = document.querySelector('.edit-form__container'); 
 const titleInput = document.querySelector('.item-form__input_type_title');
 const linkInput = document.querySelector('.item-form__input_type_link');
 const closeForm = newItemElement.querySelector('.item-form__close-button');
@@ -26,7 +25,7 @@ const initialCards = [
       link: 'https://images.unsplash.com/photo-1605789097480-10434f896946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80'
     },
     {
-      name: 'Дагестан',
+      name: 'Гамсутль',
       link: 'https://images.unsplash.com/photo-1634715109536-cb9a1bb02cec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80'
     },
     {
@@ -45,21 +44,38 @@ const initialCards = [
 
 const cardContainer = document.querySelector('.elements__cells');
 const addNewCardForm = document.querySelector('.item-form__content');
-const openPic = document.querySelector('.picture-viewer');
 const closePic = document.querySelector('.picture-viewer__close-button');
 const zoomPic = document.querySelector('.picture-viewer__image');
 const zoomCapture = document.querySelector('.popup__capture');
 // const buttonClose = document.querySelectorAll('.popup__close-button');
+const popupList = Array.from(document.querySelectorAll('.popup'));
 
 /*---------- Открытие/закрытие попапов ------------*/
 
+function closeByEsc(event){ 
+  if (event.key === "Escape") {
+    const currentPopup = document.querySelector('.popup_opened');
+    closePopup(currentPopup);
+  }
+}
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keyup', closeByEsc);
 } 
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keyup', closeByEsc);
 }
+
+popupList.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+    closePopup(popup);
+    }
+  });
+})
 
 /* buttonClose.forEach(function(item){
   item.addEventListener ('click', function (evt) {
