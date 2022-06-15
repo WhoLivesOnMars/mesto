@@ -6,10 +6,3 @@
   margin: 0;
   padding: 0;
 }
-  
-@media (max-width: 767px) {
-  .popup__container-photo {
-    min-width: 240px;
-    min-height: 299px;
-  }
-}

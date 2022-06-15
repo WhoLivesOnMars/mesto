@@ -6,4 +6,14 @@
   color: #FF0000;
   opacity: 0;
   transition: 0.3s;
+  position: absolute;
+  top: calc(100% - 23px);
+  left: 0;
+  padding: 7px 0;
+}
+
+@media (max-width: 1024px) {
+  .popup__input-error {
+    top: calc(100% - 32px);
+  }
 }
