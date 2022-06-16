@@ -1,14 +1,18 @@
 const formEditElement = document.querySelector('.edit-form');
+const buttonSaveTypeEdit = formEditElement.querySelector('.edit-form__save-button')
+const formEditInfo = document.querySelector('.edit-form__content');
 const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonCloseRedaction = formEditElement.querySelector('.edit-form__close-button');
 const profileName = document.querySelector('.profile__title');
 const profileDescription = document.querySelector('.profile__subtitle');
 const formElement = document.querySelector('.popup__content');
+const button = document.querySelector('.popup__save-button');
 const popupContainer = document.querySelector('.popup__container');
 const nameInput = popupContainer.querySelector('.edit-form__input_type_username');
 const jobInput = popupContainer.querySelector('.edit-form__input_type_description');
 const buttonAdd = document.querySelector('.profile__add-button');
 const itemNewElement = document.querySelector('.item-form');
+const buttonSaveTypeAdd = itemNewElement.querySelector('.item-form__save-button');
 const titleInput = document.querySelector('.item-form__input_type_title');
 const linkInput = document.querySelector('.item-form__input_type_link');
 const buttonCloseAdding = itemNewElement.querySelector('.item-form__close-button');
@@ -46,7 +50,6 @@ const formAddingCard = document.querySelector('.item-form__content');
 const picViewerClose = document.querySelector('.picture-viewer__close-button');
 const zoomPic = document.querySelector('.picture-viewer__image');
 const zoomCapture = document.querySelector('.popup__capture');
-// const buttonClose = document.querySelectorAll('.popup__close-button');
 const popupList = Array.from(document.querySelectorAll('.popup'));
 
 /*---------- Открытие/закрытие попапов ------------*/
@@ -75,12 +78,6 @@ popupList.forEach((popup) => {
     }
   });
 })
-
-/* buttonClose.forEach(function(item){
-  item.addEventListener ('click', function (evt) {
-
-  })
-}) */
 
 /*------------ Карточки "из коробки" --------------*/
 
@@ -139,7 +136,9 @@ formAddingCard.addEventListener('submit', addNewCard);
 
 buttonEdit.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
-  jobInput.value = profileDescription.textContent; 
+  jobInput.value = profileDescription.textContent;
+  resetFormValidation(formEditInfo, buttonSaveTypeEdit, validationConfig);
+  enableButtonSubmit(buttonSaveTypeEdit, validationConfig);
   openPopup(formEditElement);
 });
   
@@ -158,9 +157,10 @@ formElement.addEventListener('submit', formSubmitHandler);
 /*---------- Попап добавления карточки --------------*/
 
 buttonAdd.addEventListener('click', () => {
+  resetFormValidation(formAddingCard, buttonSaveTypeAdd, validationConfig);
+  formAddingCard.reset();
 
-    
-  openPopup(itemNewElement)
+  openPopup(itemNewElement);
 });
 
 buttonCloseAdding.addEventListener('click', () => closePopup(itemNewElement));
