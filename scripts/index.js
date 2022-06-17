@@ -5,11 +5,8 @@ const buttonEdit = document.querySelector('.profile__edit-button');
 const buttonCloseRedaction = formEditElement.querySelector('.edit-form__close-button');
 const profileName = document.querySelector('.profile__title');
 const profileDescription = document.querySelector('.profile__subtitle');
-const formElement = document.querySelector('.popup__content');
-const button = document.querySelector('.popup__save-button');
-const popupContainer = document.querySelector('.popup__container');
-const nameInput = popupContainer.querySelector('.edit-form__input_type_username');
-const jobInput = popupContainer.querySelector('.edit-form__input_type_description');
+const nameInput = formEditElement.querySelector('.edit-form__input_type_username');
+const jobInput = formEditElement.querySelector('.edit-form__input_type_description');
 const buttonAdd = document.querySelector('.profile__add-button');
 const itemNewElement = document.querySelector('.item-form');
 const buttonSaveTypeAdd = itemNewElement.querySelector('.item-form__save-button');
@@ -152,7 +149,7 @@ function formSubmitHandler (evt) {
   closePopup(formEditElement);
 }
 
-formElement.addEventListener('submit', formSubmitHandler);
+formEditInfo.addEventListener('submit', formSubmitHandler);
 
 /*---------- Попап добавления карточки --------------*/
 

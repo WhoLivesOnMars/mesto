@@ -83,10 +83,6 @@ function enableValidation(validationConfig) {
   const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
   formList.forEach((popup) => {
         
-    popup.addEventListener('submit', function (evt) {
-      evt.preventDefault();
-    });
-        
     setEventListeners(popup, validationConfig)
   });
 }; 
