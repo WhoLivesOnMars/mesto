@@ -53,10 +53,14 @@ popupList.forEach((popup) => {
 
 /*------------ Карточки "из коробки" --------------*/
 
-initialCards.forEach((item) => {
+function createNewCard(item) {
   const card = new Card(item, '.elements-template');
   const cardElement = card.generateCard();
-  document.querySelector('.elements__cells').append(cardElement);
+  return cardElement;
+};
+
+initialCards.forEach((item) => {
+  cardContainer.append(createNewCard(item));
 });
 
 /*------------ Валидация форм --------------*/
@@ -74,11 +78,8 @@ formAddingCard.addEventListener('submit', (evt) => {
   const newCard = {};
   newCard.name = titleInput.value;
   newCard.link = linkInput.value;
-  const card = new Card(newCard, '.elements-template');
-  const cardElement = card.generateCard();
-  cardContainer.prepend(cardElement);
-  titleInput.value = '';
-  linkInput.value = '';
+  cardContainer.prepend(createNewCard(newCard));
+  formEditInfo.reset();
   closePopup(itemNewElement);
 });
 
@@ -93,7 +94,7 @@ buttonEdit.addEventListener('click', () => {
   
 buttonCloseRedaction.addEventListener('click', () => closePopup(formEditElement));
   
-function formSubmitHandler (evt) {
+function formEditSubmitHandler (evt) {
   evt.preventDefault();
  
   profileName.textContent = nameInput.value;
@@ -101,7 +102,7 @@ function formSubmitHandler (evt) {
   closePopup(formEditElement);
 }
 
-formEditInfo.addEventListener('submit', formSubmitHandler);
+formEditInfo.addEventListener('submit', formEditSubmitHandler);
 
 /*---------- Попап добавления карточки --------------*/
 

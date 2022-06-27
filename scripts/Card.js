@@ -19,13 +19,14 @@ export default class Card {
   
   generateCard() {
     this._element = this._getTemplate();
-    this._setEventListeners();
-  
+     
     this._element.querySelector('.elements__title').textContent = this._name;
     this._image = this._element.querySelector('.elements__item');
     this._image.src = this._link;
     this._image.alt = this._name;
   
+    this._setEventListeners();
+
     return this._element;
   };
 
@@ -52,7 +53,7 @@ export default class Card {
   };
 
   _setEventListeners() {
-    this._element.querySelector('.elements__item').addEventListener('click', () => {
+    this._image.addEventListener('click', () => {
       this._handleOpenPopup();
     });
 
@@ -69,22 +70,3 @@ export default class Card {
     });
   }
 }
-
-/* formAddingCard.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-    const newCard = {};
-    newCard.name = titleInput.value;
-    newCard.link = linkInput.value;
-    const card = new Card(newCard, '.elements-template');
-    const cardElement = card.generateCard();
-    cardContainer.prepend(cardElement);
-    titleInput.value = '';
-    linkInput.value = '';
-    closePopup(itemNewElement);
-  });
-    
-  initialCards.forEach((item) => {
-    const card = new Card(item, '.elements-template');
-    const cardElement = card.generateCard();
-    document.querySelector('.elements__cells').append(cardElement);
-  }); */

@@ -1,5 +1,5 @@
 export default class FormValidator {
-  constructor(validationConfig, popup) {
+  constructor(validationConfig, formElement) {
     this._formSelector = validationConfig.formSelector;
     this._inputSelector = validationConfig.inputSelector;
     this._buttonSaveSelector = validationConfig.buttonSaveSelector;
@@ -9,20 +9,20 @@ export default class FormValidator {
     this._buttonSaveTypeEdit = validationConfig.buttonSaveTypeEdit;
     this._buttonSaveTypeAdd = validationConfig.buttonSaveTypeAdd;
 
-    this._popup = popup;
-    this._inputList = Array.from(this._popup.querySelectorAll(this._inputSelector));
-    this._buttonSaveElement = this._popup.querySelector(this._buttonSaveSelector);
+    this._formElement = formElement;
+    this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
+    this._buttonSaveElement = this._formElement.querySelector(this._buttonSaveSelector);
   };
 
   _showInputError(inputElement, errorMessage) {
-    const errorElement = this._popup.querySelector(`.${inputElement.id}-error`);
+    const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(this._inputErrorClass);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(this._errorClass);
   };
         
   _hideInputError(inputElement) {
-    const errorElement = this._popup.querySelector(`.${inputElement.id}-error`);
+    const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(this._inputErrorClass);
     errorElement.classList.remove(this._errorClass);
     errorElement.textContent = '';
@@ -60,13 +60,13 @@ export default class FormValidator {
     };
   };
 
-  _setEventListeners = (inputList, buttonSaveElement) => {   
-    this._toggleButtonState(this._inputList, this._buttonSaveElement);
+  _setEventListeners() {   
+    this._toggleButtonState();
      
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
-        this._toggleButtonState(inputList, buttonSaveElement);
+        this._toggleButtonState();
       });
     });
   };  
@@ -79,11 +79,7 @@ export default class FormValidator {
   };
 
   enableValidation() {
-    this._popup.addEventListener('submit', (evt) => {
-        evt.preventDefault();
-    })
-    console.log(this._popup);
-    this._setEventListeners(this._popup);
-    this._toggleButtonState(this._inputList, this._buttonSaveElement);
+    this._setEventListeners();
+    this._toggleButtonState();
   };
 };
