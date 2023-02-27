@@ -1,0 +1,21 @@
+const formEditElement = document.querySelector('.edit-form');
+export const formEditInfo = document.querySelector('.edit-form__content');
+export const buttonEdit = document.querySelector('.profile__edit-button');
+// const buttonCloseRedaction = formEditElement.querySelector('.edit-form__close-button');
+export const profileName = document.querySelector('.profile__title');
+export const profileDescription = document.querySelector('.profile__subtitle');
+export const nameInput = formEditElement.querySelector('.edit-form__input_type_username');
+export const jobInput = formEditElement.querySelector('.edit-form__input_type_description');
+export const buttonAdd = document.querySelector('.profile__add-button');
+// const itemNewElement = document.querySelector('.item-form');
+// const titleInput = document.querySelector('.item-form__input_type_title');
+// const linkInput = document.querySelector('.item-form__input_type_link');
+// const buttonCloseAdding = itemNewElement.querySelector('.item-form__close-button');
+// const viewerElement = document.querySelector('.picture-viewer');
+
+// const cardContainer = document.querySelector('.elements__cells');
+export const formAddingCard = document.querySelector('.item-form__content');
+// const picViewerClose = document.querySelector('.picture-viewer__close-button');
+// const zoomPic = document.querySelector('.picture-viewer__image');
+// const zoomCaption = document.querySelector('.popup__caption');
+// const popupList = Array.from(document.querySelectorAll('.popup'));

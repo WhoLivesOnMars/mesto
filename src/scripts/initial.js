@@ -23,7 +23,7 @@ export const initialCards = [
     name: 'Владивосток',
     link: 'https://images.unsplash.com/photo-1629813366051-b58137b2792c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80'
   }
-];
+]; 
 
  export const validationConfig = {
   formSelector: ".popup__content",

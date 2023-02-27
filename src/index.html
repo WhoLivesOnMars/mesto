@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
-  <title>Сервис для размещения фотографий "Mesto"</title>
+  <title>Сервис для размещения красивых фотографий "Mesto"</title>
 </head>
 <body class="page">
   <header class="header">
@@ -12,7 +11,7 @@
   </header>
   <main class="content">
     <section class="profile">
-      <img class="profile__avatar" src="./images/Jacques-Yves_Cousteau's_avatar.jpg" alt="Фото профиля">
+      <img class="profile__avatar" src="<%=require('./images/Jacques-Yves_Cousteau's_avatar.jpg')%>" alt="Фото профиля">
       <div class="profile__info">
         <h1 class="profile__title">Жак-Ив Кусто</h1>
         <button class="profile__edit-button" type="button" aria-label="Редактировать"></button>
@@ -63,7 +62,7 @@
         <h3 class="popup__title">Новое место</h3>
         <fieldset class="popup__fieldset">
           <label class="popup__field">
-            <input class="popup__input item-form__input item-form__input_type_title" id="title-input" name="title" type="text" placeholder="Название" minlength="2" maxlength="30" required>
+            <input class="popup__input item-form__input item-form__input_type_title" id="title-input" name="name" type="text" placeholder="Название" minlength="2" maxlength="30" required>
             <span class="title-input-error popup__input-error"></span>
           </label>
           <label class="popup__field">
@@ -82,6 +81,6 @@
       <h3 class="popup__caption"></h3>
     </div>
   </div>
-  <script type="module" src="./scripts/index.js"></script>
+  <!-- <script type="module" src="./src/index.js"></script> --->
 </body>
 </html>
