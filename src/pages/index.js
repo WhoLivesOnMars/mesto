@@ -57,7 +57,7 @@ buttonAdd.addEventListener('click', function() {
     formAddingCardValidator.resetFormValidation(); 
     popupWithFormPlace.open();
     popupWithFormPlace.setEventListeners();
-    formAddingCard.reset();
+    //formAddingCard.reset();
 }); 
 
 /*------- Попап редактирования информации в профиле -------*/
