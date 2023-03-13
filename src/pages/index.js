@@ -6,7 +6,7 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import FormValidator from '../components/FormValidator.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
-import { formEditInfo, buttonEdit, profileName, profileDescription, nameInput, jobInput, buttonAdd, formAddingCard } from '../scripts/constants.js';
+import { formEditInfo, buttonEdit, nameInput, jobInput, buttonAdd, formAddingCard } from '../scripts/constants.js';
 
 
 /*------------ Карточки "из коробки" --------------*/
