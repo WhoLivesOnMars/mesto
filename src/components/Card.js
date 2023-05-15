@@ -46,7 +46,6 @@ export default class Card {
   _setEventListeners() {
     this._buttonLike.addEventListener('click', () => this._handleLikeClick());
     if (this._isOwner) {
-      this._deleteButton.style.visibility = 'visible'
       this._deleteButton.addEventListener('click', () => this._handleDeleteCard({ id: this._cardId, element: this }));
     }
     this._cardImage.addEventListener('click', () => this._handleCardClick({ name: this._name, link: this._link }));
@@ -59,7 +58,9 @@ export default class Card {
   
     if (this._hasMyLike) this._buttonLike.classList.add('elements__like-button_active');
     this._likeCounter.textContent = this._likes.length
-    
+    if (!this._isOwner) {
+        this._deleteButton.classList.add('elements__delete-button_inactive');
+    }
     this._setEventListeners();
 
     return this._element;

@@ -45,7 +45,7 @@ const popupSetAvatar = new PopupWithForm({ popupSelector: '.popup_type_edit-avat
 handlerSubmitForm: setNewAvatar})
 
 function setNewAvatar(input) {
-  buttonSaveAvatar.textContent = 'Сохранение...';
+  popupSetAvatar.renderLoading(true);
   api.setNewAvatar(input)
     .then((res) => {
       userInfo.setAvatar(res.avatar);
@@ -53,7 +53,9 @@ function setNewAvatar(input) {
     })
     .catch((err) => console.log(err))
     .finally(() => {
-      buttonSaveAvatar.textContent = 'Сохранить'})}
+     popupSetAvatar.renderLoading(false);
+    })
+}
 
 popupSetAvatar.setEventListeners();
 
@@ -68,7 +70,7 @@ const userInfo = new UserInfo({ username: '.profile__title', description: '.prof
 
 const popupWithFormEdit = new PopupWithForm({ popupSelector: '.edit-form',
 handlerSubmitForm: (userData) => {
-  buttonSaveProfile.textContent = 'Сохранение...'
+  popupWithFormEdit.renderLoading(true);
   api.setUserInfo({ item: userData })
     .then((res) => {
       userInfo.setUserInfo({ data: res });
@@ -77,7 +79,9 @@ handlerSubmitForm: (userData) => {
     .catch(err => {
       console.log(err);
     })
-    .finally(() => buttonSaveProfile.textContent = 'Сохранить')
+    .finally(() => { 
+      popupWithFormEdit.renderLoading(false)
+    })
 }
 });
 
@@ -115,8 +119,8 @@ const cardList = new Section({
 /*------------ Добавление новой карточки --------------*/
 
 const popupWithFormPlace = new PopupWithForm({ popupSelector: '.item-form',    
-handlerSubmitForm: (item) => {
-    buttonSaveNewCard.textContent = 'Сохранение...'
+  handlerSubmitForm: (item) => {
+    popupWithFormPlace.renderLoading(true);
     api.addNewCard({ item })
       .then((item) => {
         cardList.addItem(createNewCard(item), 'start');
@@ -125,8 +129,10 @@ handlerSubmitForm: (item) => {
       .catch(err => {
         console.log(err);
       })
-      .finally(() => buttonSaveNewCard.textContent = 'Создать')
-}
+      .finally(() => {
+        popupWithFormPlace.renderLoading(false);
+      })
+  }
 });
 popupWithFormPlace.setEventListeners();
 
@@ -164,7 +170,7 @@ const popupDeleteCard = new PopupDelConfirmation('.popup_type_delete');
 popupDeleteCard.setEventListeners();
 
 function deleteCards(id, element) {
-  buttonDeleteCard.textContent = 'Удаление...';
+  popupDeleteCard.renderLoading(true);
   api.deleteCards(id)
     .then(() => {
       element.deleteCards();
@@ -173,7 +179,9 @@ function deleteCards(id, element) {
     .catch(err => {
       console.log(err);
     })
-    .finally(() => buttonDeleteCard.textContent = 'Да')
+    .finally(() => {
+      popupDeleteCard.renderLoading(false);
+    })
  }
 
 function handleDeleteCard({ id, element }) {

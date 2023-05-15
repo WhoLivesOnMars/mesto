@@ -33,5 +33,5 @@ export const initialCards = [
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__input-error_active",
   buttonSaveTypeEdit: ".edit-form__save-button",
-  buttonSaveTypeAdd: ".item-form__save-button",
+  buttonSaveTypeAdd: ".item-form__save-button"
 };
