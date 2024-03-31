@@ -1,4 +1,4 @@
-# Project: The Place
+# Project: The Mesto
 
 - Yandex.Praktikum project.
 - This is a single-page adaptive website about travel. The site is interactive, connected to a server, with the ability to edit profiles, change logos, add photos, like and unlike. Made with adaptive HTML and CSS layout, all logic in JavaScript, structured using the BEM methodology.
