@@ -19,4 +19,8 @@
 
 ### Technologies
 
+- HTML
+- CSS
+- JavaScript
+
 [Website link](https://wholivesonmars.github.io/mesto/)
